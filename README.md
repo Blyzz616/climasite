@@ -6,7 +6,7 @@ Building a temperature network to view the status of the house at a glance.
 
 ### Seeed ESP32-C6
 
-![image](https://github.com/user-attachments/assets/e8d951df-8d4a-44dd-a488-af3d2030030b)
+![image](https://github.com/user-attachments/assets/c1c1fa5e-355d-4844-9163-cde4e4865fa7)
 
 ![image](https://github.com/user-attachments/assets/032e0e83-2637-41fe-9aa3-2b1b53b858fe)
 
