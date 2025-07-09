@@ -97,6 +97,7 @@ However, the plan doesn't stop there. The intention is to the disaply a floorpla
 
 ### Seerverside: 
 
+- [ ] Databases
 - [ ] Web site to allow easy editing of room names and locations
 - [ ] Script to access API on all the sensors
 - [ ] Web site to display the termperatures in real-time
