@@ -20,6 +20,11 @@ Building a temperature network to view the status of the house at a glance.
 ![image](https://github.com/user-attachments/assets/e8cadad7-a3e1-4a98-bbe0-c2164b57896c)
 
 
+## The Power
+
+![image](https://github.com/user-attachments/assets/b7e58b6b-7ccb-4509-b86a-6579ff8ebd05)
+
+
 ## Physical Connections
 
 | DS18B20 Wire | ESP32-C6 Connection  | Power Supply Connection | 4.7kΩ Resistor |
@@ -30,7 +35,11 @@ Building a temperature network to view the status of the house at a glance.
 | **Yellow**   | **D10 / GPIO10 pin** | —                       | Other end here |
 
 
-## The Plan
+## The Plan (Construction)
+
+Remove the USB inards of the usb power supply and provide +5V and GND to the controller. Hopefully there will be enough space in the housing for the ESP32-c6. The temperature probe can just hang out for the time being but I'll need to design a nice little vented enclosure for the thing that makes it look more intentional. Vented, so that air can pass over it like in a stevenson's box and not be impacted by the heat being generated from the USB charger
+
+## The PLan (Final product)
 
 When the USB Charger is plugged into a wall socket, the micro-processor will start up, connect to the wifi AP and "call home" to a hard-coded IP address.   
 In that call will be the sensor's :
