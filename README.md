@@ -43,9 +43,11 @@ However, the plan doesn't stop there. The intention is to the disaply a floorpla
 ## To DO:
 
 ### ESP32-C6
+
 [] Code for the probe to start up, connect to the wifi and update the temperature - Also API server
 
 ### Seerverside: 
+
 [] Web site to allow easy editing of room names and locations
 [] Script to access API on all the sensors
 [] Web site to display the termperatures in real-time
