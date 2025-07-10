@@ -19,6 +19,13 @@ Building a temperature network to view the status of the house at a glance.
 
 ![image](https://github.com/user-attachments/assets/e8cadad7-a3e1-4a98-bbe0-c2164b57896c)
 
+Why a *waterproof* sensor?  
+I had a few lying around for ages now, and don't really want to buy new ones.  
+However, If you're doing this project - I'd recommend something like this:  
+[DS18B20 on AliExpress](https://www.aliexpress.com/item/1005008644135794.html)  
+<img width="542" height="925" alt="image" src="https://github.com/user-attachments/assets/07266416-cbc7-4355-80ad-716f488fa45d" />
+
+
 
 ## The Power
 
