@@ -19,7 +19,7 @@ const char* announce_endpoint = "/announce";
 const char* temp_endpoint = "/temperature";
 
 // DS18B20 setup
-#define ONE_WIRE_BUS 18 // GPIO pin
+#define ONE_WIRE_BUS 19 // GPIO pin 19 = D8
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
