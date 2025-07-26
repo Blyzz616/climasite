@@ -1,106 +1,120 @@
-// ESP32-C6 DS18B20 temperature reporting to central server
-// Uses WiFi and HTTP
+#include <WiFi.h>                 // Wi-Fi connectivity
+#include <HTTPClient.h>           // HTTP client for sending POST requests
+#include <OneWire.h>              // 1-Wire protocol support
+#include <DallasTemperature.h>    // Library for DS18B20 temperature sensor
 
-#include <WiFi.h>
-#include <OneWire.h>
-#include <DallasTemperature.h>
-#include <HTTPClient.h>
+// GPIO pin connected to the data line of the DS18B20 sensor
+// This will be D8 on the XIAO Esp32-C6
+#define ONE_WIRE_BUS 19
 
-// WiFi credentials
-// Insert SSID And PSK
-const char* ssid = "";
-const char* password = "";
+// Wi-Fi credentials
+#define WIFI_SSID ""                   // ⚠️ Replace with your Wi-Fi SSID
+#define WIFI_PASSWORD "mag1cdrag0n"    // ⚠️ Replace with your Wi-Fi password
 
-// Server config
-// Insert Server IP
-const char* server_ip = ""; 
-const int server_port = 80;
-const char* announce_endpoint = "/announce";
-const char* temp_endpoint = "/temperature";
+// Server endpoint for uploading temperature data
+#define SERVER_URL "http://192.168.0.200/upload.php"
 
-// DS18B20 setup
-#define ONE_WIRE_BUS 19 // GPIO pin 19 = D8
+// Set up 1-Wire communication on specified pin
 OneWire oneWire(ONE_WIRE_BUS);
+
+// Use DallasTemperature to communicate with DS18B20 sensor
 DallasTemperature sensors(&oneWire);
 
+// Address of the temperature sensor (will be detected at runtime)
 DeviceAddress sensorAddress;
 
-WiFiServer server(80);
-
+// Connects the device to Wi-Fi
 void connectToWiFi() {
-  WiFi.begin(ssid, password);
-  //Serial.print("Connecting to WiFi");
-  while (WiFi.status() != WL_CONNECTED) {
+  Serial.print("Connecting to Wi-Fi");
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+
+  int retries = 0;
+  while (WiFi.status() != WL_CONNECTED && retries < 20) {
     delay(500);
-    //Serial.print(".");
+    Serial.print(".");
+    retries++;
   }
-  //Serial.println("\nConnected!");
-}
 
-String getSensorUID() {
-  sensors.begin();
-  if (!sensors.getAddress(sensorAddress, 0)) {
-    //Serial.println("No DS18B20 found");
-    return "UNKNOWN";
-  }
-  char addrStr[24];
-  snprintf(addrStr, sizeof(addrStr), "%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
-           sensorAddress[0], sensorAddress[1], sensorAddress[2], sensorAddress[3],
-           sensorAddress[4], sensorAddress[5], sensorAddress[6], sensorAddress[7]);
-  return String(addrStr);
-}
-
-void announceToServer(const String& uid) {
   if (WiFi.status() == WL_CONNECTED) {
-    HTTPClient http;
-    String url = String("http://") + server_ip + ":" + server_port + announce_endpoint;
-    http.begin(url);
-    http.addHeader("Content-Type", "application/json");
-
-    String payload = String("{\"ip\":\"") + WiFi.localIP().toString() + "\",\"uid\":\"" + uid + "\"}";
-    int httpResponseCode = http.POST(payload);
-    Serial.printf("Announce response: %d\n", httpResponseCode);
-    http.end();
-  }
-}
-
-float readTemperature() {
-  sensors.requestTemperatures();
-  return sensors.getTempCByIndex(0);
-}
-
-void handleClientRequest(WiFiClient client) {
-  String request = client.readStringUntil('\r');
-  client.readStringUntil('\n'); // consume newline
-
-  if (request.startsWith("GET /temperature")) {
-    float temp = readTemperature();
-    client.println("HTTP/1.1 200 OK");
-    client.println("Content-Type: application/json");
-    client.println("Connection: close");
-    client.println();
-    client.printf("{\"temperature\": %.2f}\n", temp);
+    Serial.println("\nWi-Fi connected!");
+    Serial.print("IP Address: ");
+    Serial.println(WiFi.localIP());
   } else {
-    client.println("HTTP/1.1 404 Not Found");
-    client.println("Connection: close");
-    client.println();
+    Serial.println("\nFailed to connect to Wi-Fi");
   }
-  delay(1);
-  client.stop();
+}
+
+// Converts a device address (8-byte) to a formatted string (UUID-like)
+String formatAddress(DeviceAddress addr) {
+  char uid[24];
+  snprintf(uid, sizeof(uid), "%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
+           addr[0], addr[1], addr[2], addr[3],
+           addr[4], addr[5], addr[6], addr[7]);
+  return String(uid);
 }
 
 void setup() {
-  Serial.begin(115200);
-  connectToWiFi();
-  String uid = getSensorUID();
-  announceToServer(uid);
-  server.begin();
-  //Serial.println("Ready to serve temperature on /temperature");
+  Serial.begin(115200);           // Start serial communication
+  sensors.begin();                // Initialize the DS18B20 sensor
+  connectToWiFi();                // Connect to Wi-Fi
+
+  Serial.println("Scanning for DS18B20 sensors...");
+  // Attempt to retrieve the address of the first sensor
+  if (sensors.getAddress(sensorAddress, 0)) {
+    Serial.print("Found sensor 0: ");
+    Serial.println(formatAddress(sensorAddress));
+  } else {
+    Serial.println("No DS18B20 sensor found!");
+  }
 }
 
 void loop() {
-  WiFiClient client = server.available();
-  if (client) {
-    handleClientRequest(client);
+  // Check that a sensor is available
+  if (!sensors.getAddress(sensorAddress, 0)) {
+    Serial.println("No DS18B20 sensor available. Skipping measurement.");
+    delay(60000); // Wait one minute before retry
+    return;
   }
+
+  // Request temperature measurement
+  sensors.requestTemperatures();
+  float tempC = sensors.getTempC(sensorAddress);
+
+  // Check if the sensor is disconnected
+  if (tempC == DEVICE_DISCONNECTED_C) {
+    Serial.println("Error: Sensor disconnected.");
+    delay(60000);
+    return;
+  }
+
+  // Only send data if connected to Wi-Fi
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(SERVER_URL);
+    http.addHeader("Content-Type", "application/json");
+
+    // Format sensor address and prepare JSON payload
+    String uid = formatAddress(sensorAddress);
+    String postData = "{\"uuid\":\"" + uid + "\",\"temperature\":" + String(tempC, 2) + "}";
+
+    // Send POST request
+    int httpResponseCode = http.POST(postData);
+
+    Serial.print("POST response: ");
+    Serial.println(httpResponseCode);
+
+    // Output server response if successful
+    if (httpResponseCode > 0) {
+      String response = http.getString();
+      Serial.println("Server response: " + response);
+    } else {
+      Serial.println("POST failed");
+    }
+
+    http.end(); // Close the connection
+  } else {
+    Serial.println("Not connected to Wi-Fi.");
+  }
+
+  delay(60000);  // Wait 60 seconds before the next reading
 }
