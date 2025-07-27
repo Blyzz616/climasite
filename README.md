@@ -106,6 +106,14 @@ There will then naturally be a 4th table wilt the actaul readings from the senso
 
 However, the plan doesn't stop there. The intention is to the disaply a floorplan of the house with each room displaying it's temperature and maybe enve move into a colour gradient being displayed in the rooms.
 
+## Progress
+
+### July 26, 2025
+
+<img width="424" height="350" alt="image" src="https://github.com/user-attachments/assets/85f17a97-c181-4aed-9311-30f4dcf0ff20" />
+
+I'm getting readings. Thisis currently plugged into the wall in my living romm.
+
 ## To DO:
 
 ### ESP32-C6
