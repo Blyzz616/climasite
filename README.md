@@ -114,6 +114,24 @@ However, the plan doesn't stop there. The intention is to the disaply a floorpla
 
 I'm getting readings. Thisis currently plugged into the wall in my living romm.
 
+Here's the current file structure:
+|-- api
+|   └-- sensors.php
+|-- display.php
+|-- fonts
+|   |-- roboto.woff2
+|-- includes
+|   └-- db.php
+|-- index.html
+|-- localtime -> /usr/share/zoneinfo/America/Vancouver
+|-- phpmyadmin -> /usr/share/phpmyadmin
+|-- scripts
+|   |-- display.js
+|-- styles
+|   |-- dark-theme.css
+└-- upload.php
+
+
 ## To DO:
 
 ### ESP32-C6
@@ -125,4 +143,4 @@ I'm getting readings. Thisis currently plugged into the wall in my living romm.
 - [x] Databases
 - [ ] Web site to allow easy editing of room names and locations
 - [ ] Script to access API on all the sensors
-- [ ] Web site to display the termperatures in real-time
+- [x] Web site to display the termperatures in real-time
