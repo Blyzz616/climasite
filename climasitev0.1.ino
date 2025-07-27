@@ -9,7 +9,7 @@
 
 // Wi-Fi credentials
 #define WIFI_SSID ""                   // ⚠️ Replace with your Wi-Fi SSID
-#define WIFI_PASSWORD ""    // ⚠️ Replace with your Wi-Fi password
+#define WIFI_PASSWORD ""               // ⚠️ Replace with your Wi-Fi password
 
 // Server endpoint for uploading temperature data
 #define SERVER_URL "http://192.168.0.200/upload.php"
