@@ -127,17 +127,17 @@ Here's the current file structure:
 ```
 /var/www/html/  
 |-- api  
-|      └-- sensors.php  
+|    └-- sensors.php  
 |-- display.php  
 |-- fonts  
-|      |-- roboto.woff2  
+|    |-- roboto.woff2  
 |-- includes  
-|      └-- db.php  
+|    └-- db.php  
 |-- index.html  
 |-- scripts  
-|      |-- display.js  
+|    |-- display.js  
 |-- styles  
-|      |-- dark-theme.css  
+|    |-- dark-theme.css  
 └-- upload.php  
 ```
 
