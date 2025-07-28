@@ -123,7 +123,8 @@ Between that and the D8 pin is a 4.7kΩ resistor (the spacing works just right)
 The D8 is shared with the data wire from the DS18B20 probe.
 <img width="860" height="810" alt="image" src="https://github.com/user-attachments/assets/08968037-26ec-4472-bdf4-6c93b092b242" />  
 
-What I lit this is the tiny form-factor.  The probe iteself is bigger than the processor + Wifi!  
+What I love about this it this is the tiny form-factor. The probe iteself is bigger than the processor + Wifi!  
+The only drawback is the Arduino IDE support of the C6. You need to use a custom library to get it to work properly.
 <img width="1401" height="788" alt="image" src="https://github.com/user-attachments/assets/1be45b0d-d3a6-4a2f-aa43-05f2fe1a407e" />
 
 The first prototpye was a test, and it doesn't look great. But, it doesn't look te4rrible either  
@@ -148,8 +149,6 @@ I used some old printer filament (PLA) and the side of my sopldering iron to mel
 
 Doesn't look too bad:  
 <img width="678" height="975" alt="image" src="https://github.com/user-attachments/assets/18bc641a-0535-4e49-920d-00bcf11efb5c" />
-
-
 
 And here's the dashboard up and running with the first 2 sensors sending in data:  
 <img width="1300" height="366" alt="image" src="https://github.com/user-attachments/assets/cf54c5f6-0eeb-496c-86dc-572b6d20c7fd" />
