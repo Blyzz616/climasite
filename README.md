@@ -117,16 +117,41 @@ I'm getting readings. Thisis currently plugged into the wall in my living romm.
 I've just finished construction opn my 2nd sensor.  
 Here are some pictures of the contruction process:  
 
-![20250726_144643](https://github.com/user-attachments/assets/9bf1bd5b-79d0-4c47-b5b5-ca9fab7865cd)  
-![20250726_144634](https://github.com/user-attachments/assets/3582b306-489d-473e-a227-b199c46928de)  
-![20250726_144623](https://github.com/user-attachments/assets/b4c25f63-427d-468f-8524-9c5f01d6facc)  
-![20250727_153600](https://github.com/user-attachments/assets/8622498a-7214-4c9b-8471-8ddeefdd846d)  
+Back of the board - top left is the 5V pin that will be accepting the power from the USB charger.   
+Below that, the shared Ground pin for the DS18B20 probe and the Ground from the USB charger.  
+Between that and the D8 pin is a 4.7kΩ resistor (the spacing works just right).
+The D8 is shared with the data wire from the DS18B20 probe.
+<img width="860" height="810" alt="image" src="https://github.com/user-attachments/assets/08968037-26ec-4472-bdf4-6c93b092b242" />  
+
+What I lit this is the tiny form-factor.  The probe iteself is bigger than the processor + Wifi!  
+<img width="1401" height="788" alt="image" src="https://github.com/user-attachments/assets/1be45b0d-d3a6-4a2f-aa43-05f2fe1a407e" />
+
+The first prototpye was a test, and it doesn't look great. But, it doesn't look te4rrible either  
+<img width="575" height="798" alt="image" src="https://github.com/user-attachments/assets/0b95873a-7de1-4d82-9b6d-fc889325a2a1" />
+
+The second sensor I built looks a bit better. I started with a hole for the probe to leave the enclosure  
+<img width="1203" height="948" alt="image" src="https://github.com/user-attachments/assets/57c2408d-0e9a-40a1-ab31-2bc5069fcd38" />
+
+Then opened the back with a saw  
+<img width="903" height="883" alt="image" src="https://github.com/user-attachments/assets/5f0eb582-dbe0-4379-a861-a053c84171b7" />  
+<img width="915" height="762" alt="image" src="https://github.com/user-attachments/assets/f07662ba-bb84-447d-8363-a3a78bb78fde" />  
+
+After removing the electronics, I closed up the USB ports  
+<img width="893" height="879" alt="image" src="https://github.com/user-attachments/assets/4b7d605b-a75f-4667-8f2c-541e703cfe82" />  
+
+Then I de-soldered the USB component from the PCB:  
+<img width="960" height="850" alt="image" src="https://github.com/user-attachments/assets/1207db5a-ee0b-46d7-9926-fab716d733da" />
+
+Attached the +5V to the correct pin, GND top the shared GND pin on the board and put it back together.  
+I used some old printer filament (PLA) and the side of my sopldering iron to melt the filament into the gap created by the saw.  
+<img width="759" height="1072" alt="image" src="https://github.com/user-attachments/assets/78b1f231-437e-4d76-8c49-01916646e0fb" />  
+
+Doesn't look too bad:  
+<img width="678" height="975" alt="image" src="https://github.com/user-attachments/assets/18bc641a-0535-4e49-920d-00bcf11efb5c" />
 
 
 
-
-
-And here's the dashboard:  
+And here's the dashboard up and running with the first 2 sensors sending in data:  
 <img width="1300" height="366" alt="image" src="https://github.com/user-attachments/assets/cf54c5f6-0eeb-496c-86dc-572b6d20c7fd" />
 
 
