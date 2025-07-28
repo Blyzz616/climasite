@@ -122,22 +122,20 @@ And here's the dashboard:
 <img width="1300" height="366" alt="image" src="https://github.com/user-attachments/assets/cf54c5f6-0eeb-496c-86dc-572b6d20c7fd" />
 
 
-Here's the current file structure:
-|-- api
-|   └-- sensors.php
-|-- display.php
-|-- fonts
-|   |-- roboto.woff2
-|-- includes
-|   └-- db.php
-|-- index.html
-|-- localtime -> /usr/share/zoneinfo/America/Vancouver
-|-- phpmyadmin -> /usr/share/phpmyadmin
-|-- scripts
-|   |-- display.js
-|-- styles
-|   |-- dark-theme.css
-└-- upload.php
+Here's the current file structure:  
+|-- api  
+|   └-- sensors.php  
+|-- display.php  
+|-- fonts  
+|   |-- roboto.woff2  
+|-- includes  
+|   └-- db.php  
+|-- index.html  
+|-- scripts  
+|   |-- display.js  
+|-- styles  
+|   |-- dark-theme.css  
+└-- upload.php  
 
 
 ## To DO:
