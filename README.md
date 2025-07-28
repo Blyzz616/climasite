@@ -123,6 +123,9 @@ And here's the dashboard:
 
 
 Here's the current file structure:  
+
+```
+/var/www/html/  
 |-- api  
 |      └-- sensors.php  
 |-- display.php  
@@ -136,7 +139,7 @@ Here's the current file structure:
 |-- styles  
 |      |-- dark-theme.css  
 └-- upload.php  
-
+```
 
 ## To DO:
 
