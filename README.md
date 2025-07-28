@@ -114,6 +114,14 @@ However, the plan doesn't stop there. The intention is to the disaply a floorpla
 
 I'm getting readings. Thisis currently plugged into the wall in my living romm.
 
+I've just finished construction opn my 2nd sensor.  
+Here are some pictures of the contruction process:  
+
+
+And here's the dashboard:  
+<img width="1300" height="366" alt="image" src="https://github.com/user-attachments/assets/cf54c5f6-0eeb-496c-86dc-572b6d20c7fd" />
+
+
 Here's the current file structure:
 |-- api
 |   └-- sensors.php
