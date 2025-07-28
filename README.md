@@ -117,6 +117,14 @@ I'm getting readings. Thisis currently plugged into the wall in my living romm.
 I've just finished construction opn my 2nd sensor.  
 Here are some pictures of the contruction process:  
 
+![20250726_144643](https://github.com/user-attachments/assets/9bf1bd5b-79d0-4c47-b5b5-ca9fab7865cd)  
+![20250726_144634](https://github.com/user-attachments/assets/3582b306-489d-473e-a227-b199c46928de)  
+![20250726_144623](https://github.com/user-attachments/assets/b4c25f63-427d-468f-8524-9c5f01d6facc)  
+![20250727_153600](https://github.com/user-attachments/assets/8622498a-7214-4c9b-8471-8ddeefdd846d)  
+
+
+
+
 
 And here's the dashboard:  
 <img width="1300" height="366" alt="image" src="https://github.com/user-attachments/assets/cf54c5f6-0eeb-496c-86dc-572b6d20c7fd" />
