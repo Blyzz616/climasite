@@ -127,7 +127,7 @@ What I love about this it this is the tiny form-factor. The probe iteself is big
 The only drawback is the Arduino IDE support of the C6. You need to use a custom library to get it to work properly.
 <img width="1401" height="788" alt="image" src="https://github.com/user-attachments/assets/1be45b0d-d3a6-4a2f-aa43-05f2fe1a407e" />
 
-The first prototpye was a test, and it doesn't look great. But, it doesn't look te4rrible either  
+The first prototpye was a test, and it doesn't look great. But, it doesn't look terrible either  
 <img width="575" height="798" alt="image" src="https://github.com/user-attachments/assets/0b95873a-7de1-4d82-9b6d-fc889325a2a1" />
 
 The second sensor I built looks a bit better. I started with a hole for the probe to leave the enclosure  
